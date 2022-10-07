@@ -20,6 +20,8 @@ Para visualizar se os containers subiram corretamente:
 
 > docker-compose -f zk-single-kafka-multiple-kafdrop.yml ps
 
+Acesse o Kafdrop em http://localhost:9000.
+
 Para encerrar a execução:
 
 > docker-compose -f zk-single-kafka-multiple-kafdrop.yml stop
