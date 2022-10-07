@@ -14,8 +14,12 @@ Para a apresentação, utilizamos a seguinte cenário disponível no arquivo zk-
 
 Para executar os containers:
 
-> docker-compose -f zk-single-kafka-multiple-cmak.yml up -d
+> docker-compose -f zk-single-kafka-multiple-kafdrop.yml up -d
 
-E para encerrar a execução:
+Para visualizar se os containers subiram corretamente: 
 
-> docker-compose -f zk-single-kafka-multiple-cmak.yml stop
+> docker-compose -f zk-single-kafka-multiple-kafdrop.yml ps
+
+Para encerrar a execução:
+
+> docker-compose -f zk-single-kafka-multiple-kafdrop.yml stop
