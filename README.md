@@ -11,3 +11,11 @@ Para a apresentação, utilizamos a seguinte cenário disponível no arquivo zk-
 - Single Zookeeper
 - Multiple Kafka (3 brokers)
 - Kakdrop (para gerenciamento)
+
+Para executar os containers:
+
+> docker-compose -f zk-single-kafka-multiple-cmak.yml up -d
+
+E para encerrar a execução:
+
+> docker-compose -f zk-single-kafka-multiple-cmak.yml stop
