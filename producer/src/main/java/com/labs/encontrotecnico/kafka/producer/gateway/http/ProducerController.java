@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProducerController {
 
     private final KafkaTemplate<String, String> kafkaTemplate;
-    private final static boolean USE_CALLBACK = false;
 
     @PostMapping("/topics/{topic}/messages")
     public void sendToTopic(@PathVariable String topic, @RequestBody String message) {
@@ -25,13 +24,13 @@ public class ProducerController {
 //                new ListenableFutureCallback<>() {
 //                    @Override
 //                    public void onSuccess(final SendResult<String, String> result) {
-//                        log.info("Message successfully sent ='{}' topic='{}' offset='{}' ",
+//                        log.info("Message successfully sent =[{}] topic=[{}] offset=[{}] ",
 //                                message, result.getRecordMetadata().topic(), result.getRecordMetadata().offset());
 //                    }
 //
 //                    @Override
 //                    public void onFailure(final Throwable ex) {
-//                        log.info("Failed to send message with content='{}'", message, ex);
+//                        log.info("Failed to send message with content=[{}]", message, ex);
 //                    }
 //                })
         ;
