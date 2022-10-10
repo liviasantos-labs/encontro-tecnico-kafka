@@ -1,0 +1,22 @@
+
+server:
+  port: ${port:8081}
+
+#resolve incompability between swagger and spring-boot
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  kafka:
+#    retry:
+#      topic:
+#        enabled: true
+    bootstrap-servers:
+      - localhost:9092
+    consumer:
+      group-id: ${group-id:grupo-01}
+      bootstrap-servers:
+        - localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
