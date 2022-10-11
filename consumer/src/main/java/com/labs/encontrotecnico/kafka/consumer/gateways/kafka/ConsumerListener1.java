@@ -1,4 +1,4 @@
-package com.labs.encontrotecnico.kafka.consumer.gateway.kafka;
+package com.labs.encontrotecnico.kafka.consumer.gateways.kafka;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;

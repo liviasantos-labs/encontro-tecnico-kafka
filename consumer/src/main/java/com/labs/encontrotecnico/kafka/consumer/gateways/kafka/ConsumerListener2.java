@@ -1,4 +1,4 @@
-package com.labs.encontrotecnico.kafka.consumer.gateway.kafka;
+package com.labs.encontrotecnico.kafka.consumer.gateways.kafka;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -11,7 +11,9 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConsumerListener2 {
 
-    @KafkaListener(topics = "labs.topic.2")
+    @KafkaListener(topics = "labs.topic.2"
+//            containerFactory = "kafkaListenerContainerFactoryLogError"
+    )
     public void onMessage(
             @Header(value = KafkaHeaders.RECEIVED_PARTITION_ID) String partition,
             @Header(KafkaHeaders.OFFSET) String offset,
@@ -22,11 +24,7 @@ public class ConsumerListener2 {
                 offset,
                 key,
                 message);
-        throw new RuntimeException("error reading message");
-//        try {
-//            Thread.sleep(5000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+
+        throw new RuntimeException("error while reading message");
     }
 }
