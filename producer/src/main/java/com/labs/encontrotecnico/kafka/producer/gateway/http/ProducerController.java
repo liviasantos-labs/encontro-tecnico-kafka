@@ -20,19 +20,19 @@ public class ProducerController {
     @PostMapping("/topics/{topic}/messages")
     public void sendToTopic(@PathVariable String topic, @RequestBody String message) {
         kafkaTemplate.send(topic, message)
-//                .addCallback(
-//                new ListenableFutureCallback<>() {
-//                    @Override
-//                    public void onSuccess(final SendResult<String, String> result) {
-//                        log.info("Message successfully sent =[{}] topic=[{}] offset=[{}] ",
-//                                message, result.getRecordMetadata().topic(), result.getRecordMetadata().offset());
-//                    }
-//
-//                    @Override
-//                    public void onFailure(final Throwable ex) {
-//                        log.info("Failed to send message with content=[{}]", message, ex);
-//                    }
-//                })
+                .addCallback(
+                        new ListenableFutureCallback<>() {
+                            @Override
+                            public void onSuccess(final SendResult<String, String> result) {
+                                log.info("Message successfully sent =[{}] topic=[{}] offset=[{}] ",
+                                        message, result.getRecordMetadata().topic(), result.getRecordMetadata().offset());
+                            }
+
+                            @Override
+                            public void onFailure(final Throwable ex) {
+                                log.info("Failed to send message with content=[{}]", message, ex);
+                            }
+                        })
         ;
     }
 
