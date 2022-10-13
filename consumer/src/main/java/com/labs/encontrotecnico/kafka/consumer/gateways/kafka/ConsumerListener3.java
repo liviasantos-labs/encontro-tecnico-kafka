@@ -1,6 +1,7 @@
 package com.labs.encontrotecnico.kafka.consumer.gateways.kafka;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.annotation.DltHandler;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.RetryableTopic;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
+@Profile("cenario-com-retry")
 public class ConsumerListener3 {
 
     @RetryableTopic(attempts = "5",
@@ -22,7 +24,7 @@ public class ConsumerListener3 {
                           @Header(KafkaHeaders.OFFSET) String offset,
                           @Header(name = KafkaHeaders.RECEIVED_MESSAGE_KEY, required = false) String key,
                           @Payload String message) {
-        log.info("Message received on partition {}, offset {} with key {}: {}",
+        log.info("Message received on partition [{}], offset [{}] with key [{}]: [{}]",
                 partition,
                 offset,
                 key,

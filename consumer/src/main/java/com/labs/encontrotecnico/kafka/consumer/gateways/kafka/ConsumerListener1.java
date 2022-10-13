@@ -17,11 +17,16 @@ public class ConsumerListener1 {
             @Header(KafkaHeaders.OFFSET) String offset,
             @Header(name = KafkaHeaders.RECEIVED_MESSAGE_KEY, required = false) String key,
             @Payload String message) {
-        log.info("Message received on partition {}, offset {} with key {}: {}",
+        log.info("Message received on partition [{}], offset [{}] with key [{}]: [{}]",
                 partition,
                 offset,
                 key,
                 message);
+
+        consumeMessage();
+    }
+
+    private void consumeMessage() {
         try {
             Thread.sleep(5000);
         } catch (InterruptedException e) {

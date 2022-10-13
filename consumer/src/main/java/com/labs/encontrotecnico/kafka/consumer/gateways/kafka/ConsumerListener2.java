@@ -19,7 +19,7 @@ public class ConsumerListener2 {
             @Header(KafkaHeaders.OFFSET) String offset,
             @Header(name = KafkaHeaders.RECEIVED_MESSAGE_KEY, required = false) String key,
             @Payload String message) {
-        log.info("Message received on partition {}, offset {} with key {}: {}",
+        log.info("Message received on partition [{}], offset [{}] with key [{}]: [{}]",
                 partition,
                 offset,
                 key,

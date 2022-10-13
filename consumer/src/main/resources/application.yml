@@ -10,13 +10,13 @@ spring:
 #        attempts: 3
     listener:
       ack-mode: RECORD  #default é BATCH
-      missing-topics-fatal: true
+#      missing-topics-fatal: true   #falha quando o tentar ler de um tópico que não existe
     consumer:
-      bootstrap-servers:    #default
+      bootstrap-servers:
         - localhost:9092
       group-id: ${group-id:grupo-01}
-      properties:
-        allow.auto.create.topics: false   #bloqueia a criação de tópicos no consumer
+#      properties:
+#        allow.auto.create.topics: false   #bloqueia a criação de tópicos no consumer
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer  #default
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer  #default
 
