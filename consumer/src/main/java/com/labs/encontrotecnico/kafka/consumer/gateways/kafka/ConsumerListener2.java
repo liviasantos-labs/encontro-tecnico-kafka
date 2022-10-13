@@ -11,9 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ConsumerListener2 {
 
-    @KafkaListener(topics = "labs.topic.2"
-//            containerFactory = "kafkaListenerContainerFactoryLogError"
-    )
+    @KafkaListener(topics = "labs.topic.2")
     public void onMessage(
             @Header(value = KafkaHeaders.RECEIVED_PARTITION_ID) String partition,
             @Header(KafkaHeaders.OFFSET) String offset,
@@ -25,6 +23,15 @@ public class ConsumerListener2 {
                 key,
                 message);
 
-        throw new RuntimeException("error while reading message");
+        consumeMessage();
     }
+
+    private void consumeMessage() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
