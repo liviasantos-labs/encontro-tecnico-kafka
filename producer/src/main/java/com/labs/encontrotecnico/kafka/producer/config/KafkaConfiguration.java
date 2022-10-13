@@ -6,12 +6,14 @@ import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.kafka.core.KafkaAdmin;
 
 import java.util.HashMap;
 
 @Configuration
 @RequiredArgsConstructor
+@Profile("cenario-com-admin")
 public class KafkaConfiguration {
 
     private final KafkaProperties kafkaProperties;
@@ -24,17 +26,12 @@ public class KafkaConfiguration {
     }
 
     @Bean
-    public NewTopic topic1() {
-        return new NewTopic("labs.topic.1", 1, Short.valueOf("1"));
-    }
-
-    @Bean
     public NewTopic topic2() {
-        return new NewTopic("labs.topic.2", 5, Short.valueOf("1"));
+        return new NewTopic("labs.topic.2", 10, Short.valueOf("1"));
     }
 
     @Bean
     public NewTopic topic3() {
-        return new NewTopic("labs.topic.3", 5, Short.valueOf("1"));
+        return new NewTopic("labs.topic.3", 10, Short.valueOf("1"));
     }
 }
