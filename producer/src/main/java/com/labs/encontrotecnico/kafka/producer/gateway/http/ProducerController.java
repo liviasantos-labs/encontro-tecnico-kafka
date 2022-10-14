@@ -20,7 +20,7 @@ public class ProducerController {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     @PostMapping("/topics/{topic}/messages")
-    public ResponseEntity<Void> sendToTopic(@PathVariable String topic, @RequestBody String message) {
+    public ResponseEntity<Void> sendToTopic(@PathVariable final String topic, @RequestBody final String message) {
         kafkaTemplate
                 .send(topic, message)
                 .addCallback(handleSuccess(), handleFailure());
@@ -28,9 +28,9 @@ public class ProducerController {
     }
 
     @PostMapping("/topics/{topic}/keys/{key}/messages")
-    public ResponseEntity<Void> sendToTopicAtKey(@PathVariable String topic,
-                                                 @PathVariable String key,
-                                                 @RequestBody String message) {
+    public ResponseEntity<Void> sendToTopicAtKey(@PathVariable final String topic,
+                                                 @PathVariable final String key,
+                                                 @RequestBody final String message) {
         kafkaTemplate
                 .send(topic, key, message)
                 .addCallback(handleSuccess(), handleFailure());
@@ -38,10 +38,10 @@ public class ProducerController {
     }
 
     @PostMapping("/topics/{topic}/keys/{key}/partitions/{partition}/messages")
-    public ResponseEntity<Void> sendToTopicAtKeyAndPartition(@PathVariable String topic,
-                                                             @PathVariable String key,
-                                                             @PathVariable Integer partition,
-                                                             @RequestBody String message) {
+    public ResponseEntity<Void> sendToTopicAtKeyAndPartition(@PathVariable final String topic,
+                                                             @PathVariable final String key,
+                                                             @PathVariable final Integer partition,
+                                                             @RequestBody final String message) {
         kafkaTemplate.send(topic, partition, key, message);
         return ResponseEntity.accepted().build();
     }
